@@ -32,6 +32,7 @@ Erros são detectados em **tempo de compilação**, enquanto que no JavaScript s
 # Compilando
 
 Compilar: `tsc`
+
 Liga o compilador em hot-reload: `tsc -w`
 
 > Recomendo configurar um comando **npm run** para rodar o compilador. Adicione no objeto *scripts* os atributos: **"compile": "tsc"** e **"dev":  "tsc -w"** para rodar o compilador com **npm run compile** e **npm run dev**.
@@ -84,6 +85,7 @@ constructor (data: Date, quantidade: number, valor: number) {
 }
 ```
 Você pode escrever os modificadores de acesso **public**/**private**/**protected** nos parametros do construtor, antecedendo o nome. Isso faz com que auto-gere estes dados como atributos na classe.
+
 `constructor (private data: Date, private quantidade: number, private valor: number) {...}`
 
 ## Métodos
