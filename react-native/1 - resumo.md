@@ -33,7 +33,7 @@ As tags utilizadas para desenhar a tela não são HTML, mas seguindo um conceito
 - **Text** - É como o **p** do html, exibe texto na tela.
 - **Image** - É como o **img** do html, exibe uma imagem na tela.
 - **TextInput** - É como o **input** do tipo text, exibe um campo para digitar.
-- **FlatList** - É uma tag para gerar uma ListView nativa (conteúdos empilhados que poder fazer **scroll**), comportamento semelhante ao **v-for** do **Vue**
+- **FlatList** - É uma tag para gerar uma ListView nativa (conteúdos empilhados que poder fazer **scroll**), comportamento semelhante ao **v-for** do **Vue**, uma estrutura de repetição.
 - **TouchableOpacity** - Serve para encapsular outra tag, tornando seu filho clicável, disponibiliza a programação de um *callback* do clique. Seu nome se deve ao fato de que ao clicar no elemento ele pisca sofrendo uma rápida variação de opacidade.
 
 # React Hooks
