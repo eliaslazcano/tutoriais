@@ -36,12 +36,12 @@ As tags utilizadas para desenhar a tela não são HTML, mas seguindo um conceito
 - **FlatList** - É uma tag para gerar uma ListView nativa (conteúdos empilhados que poder fazer **scroll**), comportamento semelhante ao **v-for** do **Vue**, uma estrutura de repetição.
 - **TouchableOpacity** - Serve para encapsular outra tag, tornando seu filho clicável, disponibiliza a programação de um *callback* do clique. Seu nome se deve ao fato de que ao clicar no elemento ele pisca sofrendo uma rápida variação de opacidade.
 
-## Separando comportamento por Sistema Operacional
+## Separando comportamento por plataforma (Sistema Operacional)
 
 É necessário a importação de Platform:
 `import { Platform } from 'react-native'`
 
-Checagem de sistema
+Checagem de plataforma
 ```Platform.OS
 let mensagem;
 if (Platform.OS === 'ios') mensagem = 'Está usando iOS';
