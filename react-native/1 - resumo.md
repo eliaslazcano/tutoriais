@@ -36,6 +36,36 @@ As tags utilizadas para desenhar a tela não são HTML, mas seguindo um conceito
 - **FlatList** - É uma tag para gerar uma ListView nativa (conteúdos empilhados que poder fazer **scroll**), comportamento semelhante ao **v-for** do **Vue**, uma estrutura de repetição.
 - **TouchableOpacity** - Serve para encapsular outra tag, tornando seu filho clicável, disponibiliza a programação de um *callback* do clique. Seu nome se deve ao fato de que ao clicar no elemento ele pisca sofrendo uma rápida variação de opacidade.
 
+# Separando comportamento por Sistema Operacional
+
+É necessário a importação de Platform:
+`import { Platform } from 'react-native'`
+
+Checagem de sistema
+```Platform.OS
+let mensagem;
+if (Platform.OS === 'ios') mensagem = 'Está usando iOS';
+```
+
+Obtendo retorno de acordo com a plataforma
+```Platform.select
+const mensagem = Platform.select({
+  ios: 'Usando iOS da Apple',
+  android: 'Usando Android da Google',
+  default: 'Usando outra plataforma, Web por exemplo!',
+});
+```
+
+Renderizando um componente de acordo com a plataforma
+```Platform Component
+const Component = Platform.select({
+  ios: () => require('ComponentIOS'),
+  android: () => require('ComponentAndroid')
+})();
+
+<Component />;
+```
+
 # React Hooks
 
 É uma forma de criar variáveis **reativas**, ou seja, se forem utilizadas no escopo das tags, ela é atualizada constantemente na tela em caso de mudanças. Também é possível monitora-las, programando uma *function* para quando houver mudança no valor.
