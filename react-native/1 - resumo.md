@@ -4,7 +4,7 @@
 O React Native é um framework baseado no já aclamado React, desenvolvido pela equipe do Facebook, que possibilita o desenvolvimento de aplicações mobile, tanto para Android, como para iOS, utilizando apenas Javascript.
 Você pode **desenvolver online** pela ferramenta [Expo](https://snack.expo.io).
 
-# Requisitos
+## Requisitos
 
 - [NodeJs](https://nodejs.org/pt-br/)
 - [python2 e jdk8](https://chocolatey.org/) (`choco install -y python2 jdk8`)
@@ -14,7 +14,7 @@ Você pode **desenvolver online** pela ferramenta [Expo](https://snack.expo.io).
 Para completar instale o **CLI** do React Native:
 `npm install -g react-native-cli`
 
-# Comandos
+## Comandos
 
 Para começar um projeto: 
 `npx react-native init MeuApp`
@@ -26,7 +26,7 @@ Comandos para compilar ou testar:
 
 > Pressione **R** duas vezes para dar **reload** na aplicação.
 
-# Componentes nativos
+## Componentes nativos
 As tags utilizadas para desenhar a tela não são HTML, mas seguindo um conceito semelhante usamos tags que constroem um componente nativo do S.O. na tela do aparelho.
 
 - **View** - É como o **div** do html, encapsula os filhos.
@@ -36,7 +36,7 @@ As tags utilizadas para desenhar a tela não são HTML, mas seguindo um conceito
 - **FlatList** - É uma tag para gerar uma ListView nativa (conteúdos empilhados que poder fazer **scroll**), comportamento semelhante ao **v-for** do **Vue**, uma estrutura de repetição.
 - **TouchableOpacity** - Serve para encapsular outra tag, tornando seu filho clicável, disponibiliza a programação de um *callback* do clique. Seu nome se deve ao fato de que ao clicar no elemento ele pisca sofrendo uma rápida variação de opacidade.
 
-# Separando comportamento por Sistema Operacional
+## Separando comportamento por Sistema Operacional
 
 É necessário a importação de Platform:
 `import { Platform } from 'react-native'`
@@ -66,7 +66,7 @@ const Component = Platform.select({
 <Component />;
 ```
 
-# React Hooks
+## React Hooks
 
 É uma forma de criar variáveis **reativas**, ou seja, se forem utilizadas no escopo das tags, ela é atualizada constantemente na tela em caso de mudanças. Também é possível monitora-las, programando uma *function* para quando houver mudança no valor.
 
