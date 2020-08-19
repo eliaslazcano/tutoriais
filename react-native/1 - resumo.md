@@ -146,4 +146,6 @@ Propriedades da tag:
 -- "light-content": branco
 -- "dark-content": preto
 -- "default": de acordo com o sistema operacional
-- **backgroundColor**: [*Somente Android*] Cor de fundo da barra. Passe um código de cor, exemplo "#8B10AE"
+- **backgroundColor**: [*Somente Android*] Cor de fundo da barra. Passe um código de cor, exemplo "#8B10AE".
+
+> No iOS a barra não aceita backgroundColor (cor de fundo) pois nesta plataforma ela flutua sobre a aplicação com fundo transparente. Se isto for um problema para sua aplicação, contorne isso com um **marginTop: 35** na tag pai da sua StatusBar.
