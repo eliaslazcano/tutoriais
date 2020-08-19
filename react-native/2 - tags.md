@@ -47,5 +47,16 @@ A geração da lista se deve assim:
 `import {TextInput} from 'react-native'`
 
 ```TextInput
+let inputReference;
+let inputText;
+let limparCampo = function () {
+  if (inputReference) inputReference.clear();
+}
+
+<TextInput
+  ref={el => inputReference = el}
+  placeholder={'Deixe seu comentário'}
+  onChangeText={(texto) => inputText = texto}
+/>
 
 ```
