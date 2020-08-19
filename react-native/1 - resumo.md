@@ -20,9 +20,9 @@ Para começar um projeto:
 `npx react-native init MeuApp`
 
 Comandos para compilar ou testar:
-- `react-native run-android`
-- `react-native run-ios`
-- `react-native start`
+- `react-native run-android` - (Re-)Instala no App no Android.
+- `react-native run-ios` - (Re-)Instala o App no iOS.
+- `react-native start` - Liga o servidor de hot-reload.
 
 > Pressione **R** duas vezes para dar **reload** na aplicação.
 
@@ -96,3 +96,54 @@ A implementação:
 > O primeiro parâmetro é a função.
 > O segundo parâmetro é um array de variáveis reativas que serão monitoradas.
 > **Atenção:** se o segundo parâmetro for um array **vazio**, a função será executada uma vez e imediatamente.
+
+## Styles Components (Componentes estilizados)
+
+É possível fabricar rapidamente um componente com propriedades de estilo pré-determinadas partindo das tags nativas (View, Text e etc).
+
+Tenha a dependencia instalada:
+`npm install --save styled-components`
+
+Faça a importação da lib **styled-components/native** onde for usa-la:
+`import styled from 'styled-components/native'`
+
+Para criar componentes rapidamente use (No exemplo é uma tag **View**):
+```Styled Components
+export const MeuComponente = styled.View`
+  flex: 1;
+  background: #8B10AE; 
+`;
+```
+
+Utilizando o componente acima:
+```Styled components 2
+import React from 'react';
+import { MeuComponente } from './styles';
+export default function MeuApp() {
+  return(
+    <MeuComponente/>
+  )
+}
+```
+
+## StatusBar
+
+O **StatusBar** é um componente presente apenas uma vez na aplicação, ele é a barra superior da aplicação onde aparece os status do Smartphone como sinal WiFi, Bateria, Relógio e etc. Ele costuma ser utilizado no topo da aplicação, no mesmo escopo onde fica seu componente master/root, cercados por um Fragment (componente semântico, sem alteração visual).
+
+Importação:
+`import { StatusBar } from  'react-native'`
+
+Utilização:
+```StatusBar
+<Fragment>
+  <StatusBar barStyle="light-content" backgroundColor="#8B10AE" />
+  <Routes />
+<Fragment/>
+```
+
+Propriedades da tag:
+- **barStyle**: Define a cor dos textos e ícones.
+-- "light-content": branco
+-- "dark-content": preto
+-- "default": de acordo com o sistema operacional
+- **backgroundColor**: [*Somente Android*] Cor de fundo da barra. Passe um código de cor, exemplo "#8B10AE"
