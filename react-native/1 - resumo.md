@@ -149,3 +149,45 @@ Propriedades da tag:
 - **backgroundColor**: [*Somente Android*] Cor de fundo da barra. Passe um código de cor, exemplo "#8B10AE".
 
 > No iOS a barra não aceita backgroundColor (cor de fundo) pois nesta plataforma ela flutua sobre a aplicação com fundo transparente. Se isto for um problema para sua aplicação, contorne isso com um **marginTop: 35** na tag pai da sua StatusBar.
+
+## [Async Storage](https://github.com/react-native-community/async-storage)
+
+Um sistema de armazenamento de chave-valor assíncrono, não criptografado, persistente para React Native.
+
+Instalação:
+`npm install @react-native-community/async-storage`
+
+Importação:
+`import AsyncStorage from '@react-native-community/async-storage'`
+
+Gravando valor:
+`await AsyncStorage.setItem('chave', valor)`
+
+Obtendo valor:
+`const valor = await AsyncStorage.getItem('chave')`
+
+> Somente grava String, para salvar dados complexos como array ou objetos converta para uma JSON String.
+
+## [Navegação](https://reactnavigation.org)
+
+Instalação
+`npm install @react-navigation/native`
+
+Instale algumas dependencias:
+`npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view`
+
+No componente raiz (root) da aplicação (normalmente index.js ou App.js) importe esta lib **na primeira linha** do arquivo:
+`import 'react-native-gesture-handler'`
+
+Agora envolva toda a aplicação pelo componente **NavigationContainer**:
+```NavigationContainer
+import 'react-native-gesture-handler';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+
+export default function App() {
+  return (
+    <NavigationContainer>{/* codigo do app */}</NavigationContainer>
+  );
+}
+```
