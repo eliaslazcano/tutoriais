@@ -28,55 +28,85 @@ export default function App() {
 
 ### Pilha
 
+Este tipo de navegação **empilha** uma tela sobre a outra, significa então que você poderá retornar para a tela anterior na mesma sequencia. Automaticamente este método gera uma barra no topo da aplicação com o título da tela e uma seta de voltar, podendo ser personalizada ou até removida.
+
 Instale:
 `npm install @react-navigation/stack`
 
-No componente onde está sendo utilizado o `<NavigationContainer>` insira:
-`import { createStackNavigator } from '@react-navigation/stack'`
-
+Criando uma navegação **pilha**:
 ```NavigationStack
-import {Login, Feed} from '~/meuscomponentes'
+// Em App.js no seu novo projeto
 
-const navigator = createStackNavigator({
-  Login: {screen: Login},
-  Feed: {screen: Feed},
-});
-const AppContainer = createAppContainer(navigator);
+import * as React from 'react';
+import { View, Text, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
+function TelaInicial(props) {
   return (
-    <AppContainer/>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Tela Inicial</Text>
+      <Button title="Trocar de tela" onPress={() => props.navigation.navigate('Detalhes')}/>
+    </View>
   );
 }
-```
 
-Trocando de tela:
-`navigation.push('Feed')`
+function TelaAdicional(props) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Tela Adicional</Text>
+      <Button title="Abrir 'Detalhes' de novo" onPress={() => props.navigation.push('Detalhes')}/>
+      <Button title="Voltar" onPress={() => props.navigation.goBack()} />
+    </View>
+  );
+}
 
-> **navigation** é recebido entre as props do componente, isto se ele for um componente que faz parte de uma rota.
-
-### Nova forma de pilhas
-
-Há outra forma de fazer navegação do tipo pilha, recentemente disponibilizada, o exemplo de uso é:
-
-```
-import {Login, Feed} from '~/meuscomponentes'
 const Stack = createStackNavigator();
-export default function App() {
+
+function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Login} />
-        <Stack.Screen name="Feed" component={Feed} />
+        <Stack.Screen name="Home" component={TelaInicial} />
+        <Stack.Screen name="Detalhes" component={TelaAdicional} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
+export default App;
 ```
 
-E se precisar passar dados para as props do componente? Exemplo de ação:
+> **A propriedade **navigation****:
+> Os componentes Screen sempre recebem a prop **navigation**.
+>> `navigation.navigate('NomeDaRota')` navegará para a tela desejada, a menos que ja esteja nela. Se usar `navigate` em uma tela que já está na pilha, você voltará para ela.
+>
+>> `navigation.push('NomeDaRota')` navegará para a tela desejada, mesmo que ja esteja nela, forçando empilhar outra por cima.
+>
+>> `navigation.goBack()` voltará para a tela anterior da pilha.
+
+#### Passando dados para a próxima tela:
+
+O segundo parametro de **navigate** e **push** é um objeto que transportará os dados.
+`navigation.navigate('NomeRota', {autor: 'Elias', idade: 25})`
+
+O componente a seguir receberá os dados na prop `route`:
+```Passando dados
+function MeuComponente(props) {
+  const { autor } = route.params;
+  const { idade } = route.params;
+}
 ```
-<Stack.Screen name="Home">
-  {props => <Login {...props} extraData={someData} />}
-</Stack.Screen>
+
+Se você não especificou nenhum parâmetro ao navegar para esta tela, os parâmetros iniciais serão usados. Para definir parametros iniciais faça assim no componente Screen:
 ```
+<Stack.Screen
+  name="MinhaRota"
+  component={MeuComponente}
+  initialParams={{ idade: 25 }}
+/>
+```
+
+#### Passando dados para a tela anterior:
+
+Para fazer isso, você pode usar o método `navigate`, que funciona como `goBack` se a tela já existe. Usando o segundo parametro para enviar dados como ensinado anteriormente. Quando navegar para a outra tela `route.params` será atualizada para refletir os dados você enviou.
