@@ -88,6 +88,7 @@ export default App;
 #### Passando dados para a próxima tela:
 
 O segundo parametro de **navigate** e **push** é um objeto que transportará os dados.
+
 `navigation.navigate('NomeRota', {autor: 'Elias', idade: 25})`
 
 O componente a seguir receberá os dados na prop `route`:
@@ -106,6 +107,9 @@ Se você não especificou nenhum parâmetro ao navegar para esta tela, os parâm
   initialParams={{ idade: 25 }}
 />
 ```
+
+> As telas também podem atualizar os params recebidos, aproveitando o poder de reatividade na interface.
+> Basta utilizar o `navigation.setParams`.
 
 #### Passando dados para a tela anterior:
 

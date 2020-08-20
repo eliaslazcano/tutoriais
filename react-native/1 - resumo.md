@@ -168,7 +168,7 @@ Obtendo valor:
 
 > Somente grava String, para salvar dados complexos como array ou objetos converta para uma JSON String.
 
-## [Navegação](https://reactnavigation.org)
+## [Navegação](https://github.com/eliaslazcano/tutoriais/blob/master/react-native/3%20-%20navegacao.md)
 
 Instalação
 `npm install @react-navigation/native`
