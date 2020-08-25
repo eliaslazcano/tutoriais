@@ -166,3 +166,13 @@ class _MeuWidgetState extends State<MeuWidget> {
   }
 }
 ```
+
+## Componentes (Widgets) prontos do Material Design
+
+#### Introdução
+
+Para construir rapidamente uma interface, o Flutter ja vem com duas bibliotecas de Widgets prontos para uso, Cuppertino e Material, para uma aparencia do iOS e Android respectivamente.
+
+#### Scaffold - O componente partir
+
+O Scaffold é um Widget inicial para uma tela, ele fornece a barra do cabeçalho, um título e o body que é onde ficará o restante da tela.
