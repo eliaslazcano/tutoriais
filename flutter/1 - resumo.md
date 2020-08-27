@@ -193,7 +193,7 @@ Use `Navigator.push()`. O **push** adiciona a tela na pilha de rotas, um empilha
 ```
 Navigator.push(
   context,
-  MaterialPageRoute(builder: (context) => minhaTelaWidget()),
+  MaterialPageRoute(builder: (context) => minhaTelaWidget(argumentos)),
 );
 ```
 
@@ -226,3 +226,11 @@ Navigator.pushNamed(context, '/outrarota');
 ```
 
 > Ainda pode voltar 1 tela com `Navigator.pop(context)`
+
+#### Passando argumento para rotas nomeadas
+
+Para passar argumentos, ao usar `Navigator.pushNamed()` passe dados para o parâmetro optativo `arguments`.
+
+Para extrair, use isto no Widget evocado:
+
+`ModalRoute.of(context).settings.arguments`
