@@ -125,9 +125,9 @@ bool fn() {
 
 Basicamente o nome foi trocado de Promisse para Future. O código pode ser escrito igual ao JavaScript, usando `.then()`, `.catchError()` e `.finally()` ou `async`/`await` (unidos ao `try`/`catch`)
 
-## Widgets (components)
+## Widgets (~~componentes~~)
 
-Os Widgets fazem o mesmo papel que um Component (como é conhecido no React e Vue).
+Os Widgets fazem o mesmo papel que um ~~Componente~~ (como é conhecido no React e Vue).
 Há dois tipos de Widgets:
 - **Stateless**: é imutável, o que significa que suas propriedades não tem poder **reativo**, todos os valores na interface são finais.
 - **Stateful** possui *state* (**estado/reatividade**), podendo mudar os valores apresentados em tela, mas a implementação de um widget com *state* requer pelo menos duas classes:
@@ -167,12 +167,62 @@ class _MeuWidgetState extends State<MeuWidget> {
 }
 ```
 
-## Componentes (Widgets) prontos do Material Design
+## Widgets (~~Componentes~~) prontos do Material Design
 
 #### Introdução
 
 Para construir rapidamente uma interface, o Flutter ja vem com duas bibliotecas de Widgets prontos para uso, Cuppertino e Material, para uma aparencia do iOS e Android respectivamente.
 
-#### Scaffold - O componente partir
+#### Scaffold - O Widget de partida
 
 O Scaffold é um Widget inicial para uma tela, ele fornece a barra do cabeçalho, um título e o body que é onde ficará o restante da tela.
+
+## Navegação
+
+> **Terminologia:** Em Flutter, rotas e telas são a mesma coisa.
+
+A maioria dos Widgets fazem este import:
+ 
+`import 'package:flutter/material.dart';`
+
+Através dele você tem acesso a classe Navigator, que possui métodos estáticos (usáveis sem instanciar objeto) mencionados a seguir.
+
+#### Navegar para outra tela
+
+Use `Navigator.push()`. O **push** adiciona a tela na pilha de rotas, um empilhamento gerenciado pelo **Navigator**.
+```
+Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => minhaTelaWidget()),
+);
+```
+
+#### Retornando para a tela anterior
+
+Para voltar a tela anterior da pilha, use `Navigator.pop(context)`
+
+> O sistema de **pilhas** é quando uma tela vai ficando sobre a outra, por isso o termo empilhado.
+
+### Navegação com rota nomeada
+
+Rotas nomeadas é semelhante as URLs da Web.
+
+#### Defina as rotas
+```
+MaterialApp(
+  // Inicie o app com a rota de nome "/".
+  initialRoute: '/',
+  routes: {
+    '/': (context) => PrimeiraTela(),
+    '/outrarota': (context) => OutraTela(),
+  },
+);
+```
+
+#### Navegue para um nome
+
+```
+Navigator.pushNamed(context, '/outrarota');
+```
+
+> Ainda pode voltar 1 tela com `Navigator.pop(context)`
